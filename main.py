@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from dataclasses import dataclass
 from collections import deque
 from enum import IntEnum, auto
@@ -118,15 +120,14 @@ class TerminalRenderer(Renderer):
 
         for part in board.snake.body:
             if board.within_borders(part.point):
-                match part.direction:
-                    case Direction.UP:
-                        char = 'A'
-                    case Direction.DOWN:
-                        char = 'V'
-                    case Direction.RIGHT:
-                        char = '>'
-                    case Direction.LEFT:
-                        char = '<'
+                if part.direction == Direction.UP:
+                    char = 'A'
+                if part.direction == Direction.DOWN:
+                    char = 'V'
+                if part.direction == Direction.RIGHT:
+                    char = '>'
+                if part.direction == Direction.LEFT:
+                    char = '<'
                 scr.addstr(part.point.y + 1, part.point.x, char)
 
         scr.refresh()  # Refresh the screen to show changes
