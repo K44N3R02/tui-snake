@@ -158,18 +158,18 @@ class Game:
         self.renderer.render(self.board, self.scr)
         char = self.scr.getch()
         match chr(char):
-            case 'a' | 'h':
+            if char == 'a' or char == 'h':
                 direction = Direction.LEFT
-            case 's' | 'j':
+            if char == 's' or char == 'j':
                 direction = Direction.DOWN
-            case 'w' | 'k':
+            if char == 'w' or char == 'k':
                 direction = Direction.UP
-            case 'd' | 'l':
+            if char == 'd' or char == 'l':
                 direction = Direction.RIGHT
-            case 'q':
+            if char == 'q':
                 self.replay = False
                 return False
-            case _:
+            else:
                 return True
 
         is_alive = self.board.update(direction, False)
